@@ -65,10 +65,10 @@ class Blockchain:
         return hashlib.sha256(blockString).hexdigest()
 
     def proofOfWork(self) -> int:
-        last_block = self.chain[-1]
-        last_hash = self.hash(last_block)
+        lastBlock = self.chain[-1]
+        lastHash = self.hash(lastBlock)
         nonce = 0
-        while not self.validProof(self.transactions, last_hash, nonce):
+        while not self.validProof(self.transactions, lastHash, nonce):
             nonce += 1
         return nonce
 
@@ -76,6 +76,10 @@ class Blockchain:
         guess = (str(transactions)+str(prevHash)+str(nonce)).encode()
         guessHash = hashlib.sha256(guess).hexdigest()
         return guessHash[:self.complexity] == '0'*self.complexity
+
+    def resolveConflicts(self):
+        #TODO: add resolve conflit process
+        pass
 
 if __name__ == "__name__":
     blockchain = Blockchain()

@@ -7,6 +7,12 @@ app = Flask(__name__)
 def index():
     return render_template('./index.html')
 
+#TODO: add block viewing page
+
+#TODO: add PoW page
+
+#TODO: add transaction page
+
 if __name__ == '__main__':
     from argparse import ArgumentParser
 
